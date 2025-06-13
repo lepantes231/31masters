@@ -1,11 +1,30 @@
 
 <!DOCTYPE html>
 <html lang="tr">
-<head><!-- Firebase App (gerekli) -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+<head><script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-<!-- Firebase Authentication -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCgYFOn4be_c6tlu2aw1lSLaUZPB6yXQ_E",
+    authDomain: "masters-6a5af.firebaseapp.com",
+    projectId: "masters-6a5af",
+    storageBucket: "masters-6a5af.firebasestorage.app",
+    messagingSenderId: "1016155913074",
+    appId: "1:1016155913074:web:3992c5bb05b7a6c0ea7beb",
+    measurementId: "G-N0P7HKFT5L"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
 
 
 <script>
@@ -84,5 +103,61 @@
   <p>Bu bir bilim-tarikat sentezidir. Burada sıradan hiçbir şey yok.</p>
   <p>Kardeşliğe hoş geldin. Evren şimdi seninle konuşuyor...</p>
   <p class="footer">Versiyon: 0.1 • Başlangıç Titreşimi Aktif</p>
-</body>
-</html>
+</body><body>
+  <h1>31 Masters Üyelik</h1>
+
+  <input type="email" id="email" placeholder="Email adresi" />
+  <input type="password" id="password" placeholder="Şifre" />
+  <br />
+  <button onclick="signup()">Kayıt Ol</button>
+  <button onclick="login()">Giriş Yap</button>
+  <p id="message"></p>
+  <script><script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCygFOn4ee_c6tU2wm1LSaUZPB6yXQ_E",
+    authDomain: "masters-6a5af.firebaseapp.com",
+    projectId: "masters-6a5af",
+    storageBucket: "masters-6a5af.appspot.com",
+    messagingSenderId: "1016155931074",
+    appId: "1:1016155931074:web:992c5bb05b7a6c0ea7beb"
+  };
+
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  function signup() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    auth.createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        document.getElementById("message").innerText = "Kayıt başarılı!";
+      })
+      .catch((error) => {
+        document.getElementById("message").innerText = error.message;
+      });
+  }
+
+  function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    auth.signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        document.getElementById("message").innerText = "Giriş başarılı!";
+      })
+      .catch((error) => {
+        document.getElementById("message").innerText = error.message;
+      });
+  }// Giriş yapan kullanıcıyı takip et
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    document.getElementById("message").innerText = `Hoş geldin, ${user.email}`;
+    // Örneğin özel bir içeriği gösterebilirsin:
+    // document.getElementById("privateContent").style.display = "block";
+  } else {
+    document.getElementById("message").innerText = "Henüz giriş yapmadın.";
+    // document.getElementById("privateContent").style.display = "none";
+  }
+});
+  </script>
